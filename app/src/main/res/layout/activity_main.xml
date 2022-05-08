@@ -7,9 +7,9 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="166dp"
-        android:layout_height="25dp"
+        android:id="@+id/pass"
+        android:layout_width="171dp"
+        android:layout_height="41dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="14sp"
@@ -48,6 +48,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="iniciar"
         android:text="Iniciar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,9 +70,9 @@
         app:layout_constraintVertical_bias="0.24" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="166dp"
-        android:layout_height="25dp"
+        android:id="@+id/nombre"
+        android:layout_width="168dp"
+        android:layout_height="47dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="14sp"

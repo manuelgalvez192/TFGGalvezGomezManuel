@@ -18,6 +18,7 @@ public class DbExecute extends DbHelper{
 
     Context context;
 
+
     public DbExecute(@Nullable Context context) {
         super(context);
         this.context = context;
@@ -56,13 +57,45 @@ public class DbExecute extends DbHelper{
 
             db.insert(TABLE_LOGIN, null, values);
 
-            //prueba1
 
         }catch (Exception e)
         {
             e.toString();
         }
 
+    }
+
+    //comprobar que el usuario existe y contraseña esta bien
+    public boolean iniciar(String name, String pass, boolean seguir){
+
+
+        try
+        {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            Cursor c = db.rawQuery("SELECT PASS FROM " + TABLE_LOGIN + " WHERE NOMBRE = '" + name + "'", null);
+
+            c.moveToFirst();
+
+            System.out.println("C: " + c.getString(0) + " pass: " + pass);
+
+            if(c.getString(0).equals(pass))
+            {
+                seguir = true;
+            }else
+            {
+                seguir = false;
+            }
+
+        }catch (Exception e)
+        {
+            e.toString();
+        }
+
+        System.out.println("seguir: " + seguir);
+
+        return seguir;
     }
 
 }
