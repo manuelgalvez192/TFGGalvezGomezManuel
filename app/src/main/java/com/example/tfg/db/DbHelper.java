@@ -11,7 +11,7 @@ import com.example.tfg.MainActivity;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NOMBRE = "tfg.db";
     public static final String TABLE_EMPLEADO = "t_empleado";
     public static final String TABLE_PAIS = "t_pais";
@@ -103,6 +103,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "nombre TEXT PRIMARY KEY," +
                 "pass TEXT NOT NULL)");
 
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_LOGIN + " VALUES('Admin', 'Admin')");
+
 
     }
 
@@ -120,6 +122,7 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_PRODUCTOS);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_PEDIDO);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_CATEGORIA);
+        sqLiteDatabase.execSQL("DROP TABLE " + TABLE_LOGIN);
         onCreate(sqLiteDatabase);
     }
 }
