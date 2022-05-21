@@ -11,7 +11,7 @@ import com.example.tfg.MainActivity;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
     private static final String DATABASE_NOMBRE = "tfg.db";
     public static final String TABLE_EMPLEADO = "t_empleado";
     public static final String TABLE_PAIS = "t_pais";
@@ -51,6 +51,13 @@ public class DbHelper extends SQLiteOpenHelper {
                 "nombre TEXT NOT NULL," +
                 "codPais TEXT NOT NULL)");
 
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('1', 'Madrid', 'ESP')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('2', 'Barcelonaa', 'ESP')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('3', 'Sevilla', 'ESP')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('4', 'Toledo', 'ESP')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('5', 'Valencia', 'ESP')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('6', 'Córdoba', 'ESP')");
+
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_CLIENTES + "(" +
                 "codigo TEXT PRIMARY KEY," +
                 "nombre TEXT NOT NULL," +
@@ -73,6 +80,13 @@ public class DbHelper extends SQLiteOpenHelper {
                 "telefono TEXT NOT NULL," +
                 "numEmples INTEGER NOT NULL," +
                 "codCiu TEXT NOT NULL)");
+
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_TALLER + " VALUES('1', 'Taller Madrid', 'Calle Madrid', '0123', '5', '1')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_TALLER + " VALUES('2', 'Taller Barcelona', 'Calle Barcelona', '1234', '8', '2')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_TALLER + " VALUES('3', 'Taller Sevilla', 'Calle Sevilla', '6542', '4', '3')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_TALLER + " VALUES('4', 'Taller Toledo', 'Calle Toledo', '9878', '6', '4')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_TALLER + " VALUES('5', 'Taller Valencia', 'Calle Valencia', '1564', '7', '5')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_TALLER + " VALUES('6', 'Taller Córdoba', 'Calle Córdoba', '7485', '8', '6')");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_FABRICANTE + "(" +
                 "codigo TEXT PRIMARY KEY," +

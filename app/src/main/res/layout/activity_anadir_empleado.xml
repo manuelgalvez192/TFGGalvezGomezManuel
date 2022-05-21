@@ -23,7 +23,7 @@
         android:layout_width="94dp"
         android:layout_height="40dp"
         android:text="Nombre"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.07"
@@ -36,7 +36,7 @@
         android:layout_width="86dp"
         android:layout_height="39dp"
         android:text="Apellidos"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -46,29 +46,55 @@
 
     <TextView
         android:id="@+id/codEmple"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
+        android:layout_width="181dp"
+        android:layout_height="40dp"
         android:text="Código de empleado"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreEmple"
-        app:layout_constraintVertical_bias="0.189" />
+        app:layout_constraintVertical_bias="0.191" />
 
     <TextView
         android:id="@+id/codEmple2"
         android:layout_width="151dp"
         android:layout_height="41dp"
-        android:text="Cargo de empleado"
-        android:textSize="16sp"
+        android:text="Ciudad"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreEmple"
+        app:layout_constraintVertical_bias="0.431" />
+
+    <TextView
+        android:id="@+id/codEmple4"
+        android:layout_width="151dp"
+        android:layout_height="41dp"
+        android:text="Taller"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreEmple"
-        app:layout_constraintVertical_bias="0.431" />
+        app:layout_constraintVertical_bias="0.652" />
+
+    <TextView
+        android:id="@+id/codEmple3"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:text="Cargo de empleado"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreEmple"
+        app:layout_constraintVertical_bias="0.43" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -77,7 +103,7 @@
         android:ems="10"
         android:hint="Ej: Manuel"
         android:inputType="textPersonName"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.084"
@@ -87,18 +113,19 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
-        android:layout_width="151dp"
-        android:layout_height="56dp"
+        android:layout_width="180dp"
+        android:layout_height="53dp"
         android:ems="10"
         android:hint="Ej:1025"
         android:inputType="textPersonName"
-        android:textSize="16sp"
+        android:textColorHint="#757575"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintHorizontal_bias="0.095"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreEmple"
-        app:layout_constraintVertical_bias="0.27" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -107,7 +134,7 @@
         android:ems="10"
         android:hint="Ej: Galvez Gomez"
         android:inputType="textPersonName"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.85"
@@ -117,6 +144,30 @@
 
     <Spinner
         android:id="@+id/spinnerCargos"
+        android:layout_width="174dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.606"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Spinner
+        android:id="@+id/spinnerCiu"
+        android:layout_width="151dp"
+        android:layout_height="53dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Spinner
+        android:id="@+id/spinnerTaller"
         android:layout_width="151dp"
         android:layout_height="53dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,6 +175,7 @@
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609" />
+        app:layout_constraintVertical_bias="0.792"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

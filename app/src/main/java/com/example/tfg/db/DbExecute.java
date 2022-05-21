@@ -108,8 +108,39 @@ public class DbExecute extends DbHelper{
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_CARGO, null);
         c.moveToFirst();
         do{
-            //arr.add(c.getString(0)); Este no le queremos ya que solo queremos el nombre del cargo
-            arr.add(c.getString(0) + " " +c.getString(1));
+            arr.add(c.getString(0) + " - " +c.getString(1));
+        }while(c.moveToNext());
+
+        return arr;
+    }
+
+    public ArrayList selectTalleres()
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList arr = new ArrayList();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_TALLER, null);
+        c.moveToFirst();
+        do{
+            arr.add(c.getString(0) + " - " +c.getString(1));
+        }while(c.moveToNext());
+
+        return arr;
+    }
+
+    public ArrayList selectCiudades()
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList arr = new ArrayList();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_CIUDAD, null);
+        c.moveToFirst();
+        do{
+            arr.add(c.getString(0) + " - " +c.getString(1));
         }while(c.moveToNext());
 
         return arr;
