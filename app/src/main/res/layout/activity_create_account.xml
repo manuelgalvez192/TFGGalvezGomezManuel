@@ -18,26 +18,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nombre de usuario"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintHorizontal_bias="0.087"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.119" />
+            app:layout_constraintVertical_bias="0.115" />
 
         <EditText
             android:id="@+id/nombreUsuario"
-            android:layout_width="162dp"
-            android:layout_height="34dp"
+            android:layout_width="217dp"
+            android:layout_height="55dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textSize="12sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.092"
+            app:layout_constraintHorizontal_bias="0.123"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.149"
+            app:layout_constraintVertical_bias="0.153"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
@@ -45,26 +46,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contraseña"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintHorizontal_bias="0.072"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.23" />
+            app:layout_constraintVertical_bias="0.266" />
 
         <EditText
             android:id="@+id/contraseñaUsuario"
-            android:layout_width="161dp"
-            android:layout_height="40dp"
+            android:layout_width="212dp"
+            android:layout_height="51dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:textSize="12sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.092"
+            app:layout_constraintHorizontal_bias="0.12"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.264"
+            app:layout_constraintVertical_bias="0.31"
             tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <Button
@@ -79,7 +81,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.371" />
+            app:layout_constraintVertical_bias="0.433" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -87,6 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cree aquí su cuenta"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

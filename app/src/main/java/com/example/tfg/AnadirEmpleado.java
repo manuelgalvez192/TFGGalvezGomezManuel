@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -17,6 +18,7 @@ public class AnadirEmpleado extends AppCompatActivity {
 
     DbExecute dbExecute;
     Spinner spCargo, spTaller, spCiu;
+    String cargo, ciu, taller;
 
 
     @Override
@@ -27,6 +29,45 @@ public class AnadirEmpleado extends AppCompatActivity {
         añadirCargos();
         añadirTalleres();
         añadirCiudades();
+
+        spCargo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                cargo = (String) spCargo.getSelectedItem();
+                System.out.println("item selec " + cargo);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //nada
+            }
+        });
+
+        spTaller.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                taller = (String) spTaller.getSelectedItem();
+                System.out.println("item selec " + taller);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //nada
+            }
+        });
+
+        spCiu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ciu = (String) spCiu.getSelectedItem();
+                System.out.println("item selec " + ciu);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //nada
+            }
+        });
     }
 
 
@@ -47,6 +88,8 @@ public class AnadirEmpleado extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, arr);
 
         spCargo.setAdapter(adapter);
+
+
 
     }
 

@@ -57,10 +57,11 @@ public class DbExecute extends DbHelper{
 
             db.insert(TABLE_LOGIN, null, values);
 
-
         }catch (Exception e)
         {
             e.toString();
+            Toast.makeText(context, "Hubo un problema, intentelo de nuevo", Toast.LENGTH_LONG).show();
+
         }
 
     }
