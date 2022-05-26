@@ -16,13 +16,13 @@ public class createAccount extends AppCompatActivity {
 
     DbExecute dbExecute;
     Context context;
-    EditText nombre, pass;
+    EditText cod, pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        nombre = findViewById(R.id.nombreUsuario);
+        cod = findViewById(R.id.nombreUsuario);
         pass = findViewById(R.id.contraseñaUsuario);
     }
 
@@ -31,7 +31,7 @@ public class createAccount extends AppCompatActivity {
     {
         dbExecute = new DbExecute(createAccount.this);
 
-        dbExecute.createAccount(nombre.getText().toString(), pass.getText().toString());
+        dbExecute.createAccount(cod.getText().toString(), pass.getText().toString());
     }
 
 

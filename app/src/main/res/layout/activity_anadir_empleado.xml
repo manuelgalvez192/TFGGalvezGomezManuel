@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnadirEmpleado">
+    android:onClick="crearEmple"
+    tools:context="AnadirEmpleado">
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Añadir empleado"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -58,6 +60,19 @@
         app:layout_constraintVertical_bias="0.191" />
 
     <TextView
+        android:id="@+id/codEmple5"
+        android:layout_width="143dp"
+        android:layout_height="44dp"
+        android:text="Contraseña"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreEmple"
+        app:layout_constraintVertical_bias="0.192" />
+
+    <TextView
         android:id="@+id/codEmple2"
         android:layout_width="151dp"
         android:layout_height="41dp"
@@ -72,8 +87,8 @@
 
     <TextView
         android:id="@+id/codEmple4"
-        android:layout_width="151dp"
-        android:layout_height="41dp"
+        android:layout_width="176dp"
+        android:layout_height="40dp"
         android:text="Taller"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,7 +127,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextTextPersonCodEmple"
         android:layout_width="180dp"
         android:layout_height="53dp"
         android:ems="10"
@@ -128,7 +143,7 @@
         app:layout_constraintVertical_bias="0.268" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextTextPersonApellidos"
         android:layout_width="151dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -144,14 +159,14 @@
 
     <Spinner
         android:id="@+id/spinnerCargos"
-        android:layout_width="174dp"
-        android:layout_height="50dp"
+        android:layout_width="180dp"
+        android:layout_height="53dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606"
+        app:layout_constraintVertical_bias="0.609"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
@@ -168,7 +183,7 @@
 
     <Spinner
         android:id="@+id/spinnerTaller"
-        android:layout_width="151dp"
+        android:layout_width="176dp"
         android:layout_height="53dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,5 +192,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.792"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/crearEmple"
+        android:layout_width="121dp"
+        android:layout_height="60dp"
+        android:onClick="crearEmple"
+        android:text="Añadir Empleado"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.813" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="168dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.415" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.tfg.db.DbExecute;
@@ -19,6 +20,7 @@ public class AnadirEmpleado extends AppCompatActivity {
     DbExecute dbExecute;
     Spinner spCargo, spTaller, spCiu;
     String cargo, ciu, taller;
+    EditText nombre, apellidos, codEmple, contraseña;
 
 
     @Override
@@ -68,6 +70,11 @@ public class AnadirEmpleado extends AppCompatActivity {
                 //nada
             }
         });
+
+        nombre = findViewById(R.id.editTextTextPersonName);
+        apellidos = findViewById(R.id.editTextTextPersonApellidos);
+        codEmple = findViewById(R.id.editTextTextPersonCodEmple);
+        contraseña = findViewById(R.id.editTextTextPassword);
     }
 
 
@@ -78,11 +85,6 @@ public class AnadirEmpleado extends AppCompatActivity {
         ArrayList<String> arr = new ArrayList<String>();
 
         arr = dbExecute.selectCargos();
-
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println("i " + i + " codigo " + arr.get(i) + " cargo " + arr.get(++i));
-
-        }
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, arr);
@@ -101,11 +103,6 @@ public class AnadirEmpleado extends AppCompatActivity {
 
         arr = dbExecute.selectTalleres();
 
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println("i " + i + " codigo " + arr.get(i) + " taller " + arr.get(++i));
-
-        }
-
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, arr);
 
@@ -121,15 +118,24 @@ public class AnadirEmpleado extends AppCompatActivity {
 
         arr = dbExecute.selectCiudades();
 
-        for (int i = 0; i < arr.size(); i++) {
-            System.out.println("i " + i + " codigo " + arr.get(i) + " ciudad " + arr.get(++i));
-
-        }
-
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this,
                 android.R.layout.simple_spinner_item, arr);
 
         spCiu.setAdapter(adapter);
 
     }
+
+    public void crearEmple(View view){
+        spTaller = findViewById(R.id.spinnerTaller);
+        dbExecute = new DbExecute(AnadirEmpleado.this);
+
+        cargo = cargo.substring(0, 1);
+        ciu = ciu.substring(0, 1);
+        taller = taller.substring(0, 1);
+
+
+        dbExecute.añadirEmple(nombre.getText().toString(), apellidos.getText().toString(), Integer.parseInt(codEmple.getText().toString()),
+                Integer.parseInt(cargo), Integer.parseInt(ciu), Integer.parseInt(taller), contraseña.getText().toString());
+    }
+
 }

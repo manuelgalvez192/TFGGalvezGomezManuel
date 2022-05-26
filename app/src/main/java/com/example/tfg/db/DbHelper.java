@@ -11,7 +11,7 @@ import com.example.tfg.MainActivity;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 10;
     private static final String DATABASE_NOMBRE = "tfg.db";
     public static final String TABLE_EMPLEADO = "t_empleado";
     public static final String TABLE_PAIS = "t_pais";
@@ -35,9 +35,9 @@ public class DbHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_EMPLEADO + "(" +
                 "codigo INTEGER PRIMARY KEY," +
-                "contraseña TEXT NOT NULL," +
                 "nombre TEXT NOT NULL," +
                 "apellidos TEXT NOT NULL," +
+                "contraseña TEXT NOT NULL," +
                 "codCargo INTEGER NOT NULL," +
                 "codCiudad INTEGER NOT NULL," +
                 "codTaller INTEGER NOT NULL)");
@@ -50,6 +50,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "codigo TEXT PRIMARY KEY," +
                 "nombre TEXT NOT NULL," +
                 "codPais TEXT NOT NULL)");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('ESP', 'España')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('FRA', 'Francia')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('POR', 'Portugal')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('ITL', 'Italia')");
 
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('1', 'Madrid', 'ESP')");
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('2', 'Barcelonaa', 'ESP')");
@@ -62,7 +66,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "codigo TEXT PRIMARY KEY," +
                 "nombre TEXT NOT NULL," +
                 "apellidos TEXT NOT NULL," +
-                "direccion TEXT NOT NULL)");
+                "direccion TEXT NOT NULL," +
+                "telefono INTEGER NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_CARGO + "(" +
                 "codigo TEXT PRIMARY KEY," +
@@ -114,7 +119,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "descripcion TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_LOGIN + "(" +
-                "nombre TEXT PRIMARY KEY," +
+                "cod TEXT PRIMARY KEY," +
                 "pass TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_LOGIN + " VALUES('Admin', 'Admin')");

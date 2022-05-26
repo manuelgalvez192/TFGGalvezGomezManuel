@@ -27,22 +27,22 @@ public class DbExecute extends DbHelper{
 
 
     //para insertar nuevo usuario en la app
-    public void createAccount(String name, String pass){
+    public void createAccount(String cod, String pass){
 
         try {
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            Cursor c = db.rawQuery("SELECT NOMBRE FROM " + TABLE_LOGIN, null);
+            Cursor c = db.rawQuery("SELECT COD FROM " + TABLE_LOGIN, null);
 
             c.moveToFirst();
 
             do{
                 String nombre = c.getString(0);
 
-                System.out.println("nombre " + nombre + " name " + name);
+                System.out.println("nombre " + nombre + " name " + cod);
 
-                if(nombre.equals(name))
+                if(nombre.equals(cod))
                 {
                     Toast.makeText(context, "Ese usuario ya existe", Toast.LENGTH_SHORT).show();
                     return;
@@ -52,7 +52,7 @@ public class DbExecute extends DbHelper{
 
             Toast.makeText(context, "Usuario creado", Toast.LENGTH_SHORT).show();
             ContentValues values = new ContentValues();
-            values.put("nombre", name);
+            values.put("cod", cod);
             values.put("pass", pass);
 
             db.insert(TABLE_LOGIN, null, values);
@@ -67,7 +67,7 @@ public class DbExecute extends DbHelper{
     }
 
     //comprobar que el usuario existe y contraseña esta bien
-    public boolean iniciar(String name, String pass, boolean seguir){
+    public boolean iniciar(String cod, String pass, boolean seguir){
 
 
         try
@@ -75,7 +75,7 @@ public class DbExecute extends DbHelper{
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            Cursor c = db.rawQuery("SELECT PASS FROM " + TABLE_LOGIN + " WHERE NOMBRE = '" + name + "'", null);
+            Cursor c = db.rawQuery("SELECT PASS FROM " + TABLE_LOGIN + " WHERE COD = '" + cod + "'", null);
 
             c.moveToFirst();
 
@@ -99,8 +99,7 @@ public class DbExecute extends DbHelper{
         return seguir;
     }
 
-    public ArrayList selectCargos()
-    {
+    public ArrayList selectCargos() {
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -115,8 +114,7 @@ public class DbExecute extends DbHelper{
         return arr;
     }
 
-    public ArrayList selectTalleres()
-    {
+    public ArrayList selectTalleres() {
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -131,8 +129,7 @@ public class DbExecute extends DbHelper{
         return arr;
     }
 
-    public ArrayList selectCiudades()
-    {
+    public ArrayList selectCiudades() {
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -147,4 +144,82 @@ public class DbExecute extends DbHelper{
         return arr;
     }
 
+    public void añadirEmple(String nombre, String apellidos, int codEmple, int codCargo, int codTaller, int codCiu, String contra) {
+
+        long i = 0;
+
+        try
+        {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            System.out.println("INSERT INTO " + TABLE_EMPLEADO + " VALUES(" + codEmple + ", " + nombre + ", " + apellidos +
+                    ", " + codCargo + ", " + codCiu + ", " + codTaller + ")");
+
+            ContentValues datos = new ContentValues();
+            datos.put("codigo", codEmple);
+            datos.put("nombre", nombre);
+            datos.put("apellidos", apellidos);
+            datos.put("contraseña", contra);
+            datos.put("codCargo", codCargo);
+            datos.put("codCiudad", codCiu);
+            datos.put("codTaller", codTaller);
+
+            ContentValues log = new ContentValues();
+            log.put("cod", codEmple);
+            log.put("pass", contra);
+
+            i = db.insert(TABLE_EMPLEADO, null, datos);
+
+            db.insert(TABLE_LOGIN,null, log);
+
+            if(i > 0)
+            {
+                Toast.makeText(context, "Empleado creado", Toast.LENGTH_SHORT).show();
+            }else
+            {
+                Toast.makeText(context, "El empleado no se ha creado", Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e)
+        {
+            e.toString();
+            Toast.makeText(context, "Hubo un error al insertar el nuevo empleado, revise los datos", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public void añadirClie(String cod, String nom, String ape, String dir, int tlf){
+
+        long i = 0;
+
+        try
+        {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            System.out.println("INSERT INTO " + TABLE_CLIENTES + " VALUES(" + cod + ", " + nom + ", " + ape +
+                    ", " + dir + ", " + tlf + ")");
+
+            ContentValues datos = new ContentValues();
+            datos.put("codigo", cod);
+            datos.put("nombre", nom);
+            datos.put("apellidos", ape);
+            datos.put("direccion", dir);
+            datos.put("telefono", tlf);
+
+            i = db.insert(TABLE_CLIENTES, null, datos);
+
+            if(i > 0)
+            {
+                Toast.makeText(context, "Cliente creado", Toast.LENGTH_SHORT).show();
+            }else
+            {
+                Toast.makeText(context, "El cliente no se ha creado", Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e)
+        {
+            e.toString();
+            Toast.makeText(context, "Hubo un error al insertar el nuevo cliente, revise los datos", Toast.LENGTH_LONG).show();
+        }
+    }
 }

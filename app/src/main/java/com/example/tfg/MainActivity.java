@@ -16,14 +16,14 @@ import com.example.tfg.db.DbHelper;
 public class MainActivity extends AppCompatActivity {
 
     DbExecute dbExecute;
-    EditText nombre, pass;
+    EditText cod, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nombre = findViewById(R.id.nombre);
+        cod = findViewById(R.id.nombre);
         pass = findViewById(R.id.pass);
 
         DbHelper dbHelper = new DbHelper(MainActivity.this);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     {
         boolean seguir = false;
         dbExecute = new DbExecute(MainActivity.this);
-        seguir = dbExecute.iniciar(nombre.getText().toString(), pass.getText().toString(), seguir);
+        seguir = dbExecute.iniciar(cod.getText().toString(), pass.getText().toString(), seguir);
 
         System.out.println("seguir2: " + seguir);
 

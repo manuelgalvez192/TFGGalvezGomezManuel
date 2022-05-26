@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TFG">
         <activity
+            android:name=".AnadirClientes"
+            android:exported="false" />
+        <activity
             android:name=".AnadirEmpleado"
             android:exported="false"
             android:parentActivityName=".MenuInicio">
