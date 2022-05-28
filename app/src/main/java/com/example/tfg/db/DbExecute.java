@@ -222,4 +222,64 @@ public class DbExecute extends DbHelper{
             Toast.makeText(context, "Hubo un error al insertar el nuevo cliente, revise los datos", Toast.LENGTH_LONG).show();
         }
     }
+
+    public ArrayList selectEmples() {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList arr = new ArrayList();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_EMPLEADO, null);
+        c.moveToFirst();
+        do{
+            arr.add(c.getString(0) + " - " +c.getString(1));
+        }while(c.moveToNext());
+
+        return arr;
+    }
+
+    public ArrayList selectClie() {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList arr = new ArrayList();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_CLIENTES, null);
+        c.moveToFirst();
+        do{
+            arr.add(c.getString(0) + " - " + c.getString(1));
+        }while(c.moveToNext());
+
+        return arr;
+    }
+
+    public ArrayList selectFab() {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList arr = new ArrayList();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_FABRICANTE, null);
+        c.moveToFirst();
+        do{
+            arr.add(c.getString(0) + " - " +c.getString(1));
+        }while(c.moveToNext());
+
+        return arr;
+    }
+
+    public ArrayList selectProd() {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ArrayList arr = new ArrayList();
+
+        Cursor c = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTOS, null);
+        c.moveToFirst();
+        do{
+            arr.add(c.getString(0) + " - " + c.getString(1) + " - " + c.getString(2));
+        }while(c.moveToNext());
+
+        return arr;
+    }
 }

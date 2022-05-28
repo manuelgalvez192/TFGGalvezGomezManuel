@@ -10,8 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TFG">
         <activity
-            android:name=".AnadirClientes"
+            android:name=".HacerPedido"
             android:exported="false" />
+        <activity
+            android:name=".AnadirClientes"
+            android:exported="false"
+            android:parentActivityName=".MenuInicio">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuInicio" />
+        </activity>
         <activity
             android:name=".AnadirEmpleado"
             android:exported="false"

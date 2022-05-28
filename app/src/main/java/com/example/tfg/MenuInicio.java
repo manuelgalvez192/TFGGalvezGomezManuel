@@ -32,13 +32,13 @@ public class MenuInicio extends AppCompatActivity {
         Intent crearCuenta = new Intent(this, AnadirClientes.class);
         startActivity(crearCuenta);
     }
-/*
+
     public void hacerPedido(View v)
     {
         Intent crearCuenta = new Intent(this, HacerPedido.class);
         startActivity(crearCuenta);
     }
-
+/*
     public void calendario(View v)
     {
         Intent crearCuenta = new Intent(this, Calendrio.class);

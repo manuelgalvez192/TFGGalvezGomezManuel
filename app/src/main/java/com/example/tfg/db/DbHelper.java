@@ -11,7 +11,7 @@ import com.example.tfg.MainActivity;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 12;
     private static final String DATABASE_NOMBRE = "tfg.db";
     public static final String TABLE_EMPLEADO = "t_empleado";
     public static final String TABLE_PAIS = "t_pais";
@@ -42,18 +42,21 @@ public class DbHelper extends SQLiteOpenHelper {
                 "codCiudad INTEGER NOT NULL," +
                 "codTaller INTEGER NOT NULL)");
 
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_EMPLEADO + " VALUES('1', 'Sam', 'Fernandez', '1234', '2', '1', '1')");
+
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_PAIS + "(" +
                 "codigo TEXT PRIMARY KEY," +
                 "nombre TEXT NOT NULL)");
+
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PAIS + " VALUES('ESP', 'España')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PAIS + " VALUES('FRA', 'Francia')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PAIS + " VALUES('POR', 'Portugal')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PAIS + " VALUES('ITL', 'Italia')");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_CIUDAD + "(" +
                 "codigo TEXT PRIMARY KEY," +
                 "nombre TEXT NOT NULL," +
                 "codPais TEXT NOT NULL)");
-        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('ESP', 'España')");
-        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('FRA', 'Francia')");
-        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('POR', 'Portugal')");
-        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('ITL', 'Italia')");
 
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('1', 'Madrid', 'ESP')");
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CIUDAD + " VALUES('2', 'Barcelonaa', 'ESP')");
@@ -68,6 +71,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "apellidos TEXT NOT NULL," +
                 "direccion TEXT NOT NULL," +
                 "telefono INTEGER NOT NULL)");
+
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CLIENTES + " VALUES('1', 'Juan', 'Gomez', 'C/ veinticuatro', '+34 697421568')");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_CARGO + "(" +
                 "codigo TEXT PRIMARY KEY," +
@@ -98,6 +103,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "nombre TEXT NOT NULL," +
                 "codCiu TEXT NOT NULL)");
 
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_FABRICANTE + " VALUES('1', 'Bosch', '1')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_FABRICANTE + " VALUES('2', 'A.B.S', '1')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_FABRICANTE + " VALUES('3', 'Ridex', '2')");
+
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_PRODUCTOS + "(" +
                 "codigo TEXT PRIMARY KEY," +
                 "nombre TEXT NOT NULL," +
@@ -105,18 +114,27 @@ public class DbHelper extends SQLiteOpenHelper {
                 "codFab TEXT NOT NULL," +
                 "codCat TEXT NOT NULL)");
 
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PRODUCTOS + " VALUES('1', 'Bugia', '50', '1', '3')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PRODUCTOS + " VALUES('2', 'Neumáticos', '20', '3', '3')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PRODUCTOS + " VALUES('3', 'Tubos de escape', '40', '2', '3')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_PRODUCTOS + " VALUES('4', 'Limpiador', '5', '1', '1')");
+
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_PEDIDO + "(" +
                 "codigo TEXT PRIMARY KEY," +
                 "codClie TEXT NOT NULL," +
                 "fechaPed DATE NOT NULL," +
-                "fechaEntr DATE NOT NULL," +
                 "direccion TEXT NOT NULL," +
-                "codEmple TEXT NOT NULL)");
+                "codEmple TEXT NOT NULL," +
+                "material TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_CATEGORIA + "(" +
                 "codigo TEXT PRIMARY KEY," +
                 "nombre TEXT NOT NULL," +
                 "descripcion TEXT NOT NULL)");
+
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CATEGORIA + " VALUES('1', 'Limpieza', 'Articulos relacionados con el mantenimiento y limpieza del vehículo')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CATEGORIA + " VALUES('2', 'Cristl', 'Articulos de material de cristal, o frágil')");
+        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CATEGORIA + " VALUES('3', 'Mecánica', 'Articulos necesarios para el funcionamiento del vehículo')");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_LOGIN + "(" +
                 "cod TEXT PRIMARY KEY," +
