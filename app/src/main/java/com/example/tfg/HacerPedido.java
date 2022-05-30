@@ -1,7 +1,9 @@
 package com.example.tfg;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,13 +37,20 @@ import java.io.IOException;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
+import org.w3c.dom.Document;
+
 public class HacerPedido extends AppCompatActivity {
 
     DbExecute dbExecute;
     Spinner spEmples, spClie, spFab, spProd;
-    String material = "", aux, clie;
+    String material = "", aux, clie, nombre = "";
     EditText cantidad;
     int precio = 0;
+
+    private final static String NOMBRE_DIRECTORIO = "MiPdf";
+    private final static String NOMBRE_DOCUMENTO = "prueba.pdf";
+    private final static String ETIQUETA_ERROR = "ERROR";
+    Button btnGenerar;
 
     //boton PFG.
     Button generatePDFbtn;
@@ -88,11 +97,15 @@ public class HacerPedido extends AppCompatActivity {
                 System.out.println("cliente " + clie);
             }
 
+
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 //nada
             }
         });
+
+
 
         //inicio variables
         generatePDFbtn = findViewById(R.id.generatePDFbtn);
@@ -107,6 +120,8 @@ public class HacerPedido extends AppCompatActivity {
         }
 
     }
+
+
 
     public void generarPDF(View view) {
         //se crea objeto para el documento
@@ -147,7 +162,7 @@ public class HacerPedido extends AppCompatActivity {
 
         //creamos otro texto y le damos tamaño, colo y forma
         title.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-        title.setColor(ContextCompat.getColor(this, R.color.purple_200));
+        title.setColor(ContextCompat.getColor(this, R.color.black));
         title.setTextSize(15);
 
         //ponemos el texto al centro del pdf
@@ -157,8 +172,11 @@ public class HacerPedido extends AppCompatActivity {
         //terminamos la página
         pdfDocument.finishPage(myPage);
 
+        String[] arrayCliente = clie.split("-");
+        nombre = arrayCliente[1]; //para obtener el nombre del cliente que hace el pedido
+
         //nombre del PDF
-        File file = new File(Environment.getExternalStorageDirectory(), "Presupuesto" + clie + ".pdf");
+        File file = new File(Environment.getExternalStorageDirectory(), "Presupuesto" + nombre + ".pdf");
 
         try {
             //escribirmos sobre el pdf
@@ -185,26 +203,26 @@ public class HacerPedido extends AppCompatActivity {
         //da permisos cuando no los tiene
         ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
     }
-/*
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0) {
 
-                // after requesting permissions we are showing
-                // users a toast message of permission granted.
+                //se le muestra al usuario que los permisos estan concedidos o no
                 boolean writeStorage = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 boolean readStorage = grantResults[1] == PackageManager.PERMISSION_GRANTED;
 
                 if (writeStorage && readStorage) {
-                    Toast.makeText(this, "Permission Granted..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Permiso concedido", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Permission Denined.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Permiso denegado", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
         }
-    }*/
+    }
 
     public void añadirEmples(){
 

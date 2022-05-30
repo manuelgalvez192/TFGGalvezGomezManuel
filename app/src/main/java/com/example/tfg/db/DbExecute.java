@@ -247,7 +247,7 @@ public class DbExecute extends DbHelper{
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_CLIENTES, null);
         c.moveToFirst();
         do{
-            arr.add(c.getString(0) + " - " + c.getString(1));
+            arr.add(c.getString(0) + "-" + c.getString(1));
         }while(c.moveToNext());
 
         return arr;
