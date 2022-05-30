@@ -277,9 +277,24 @@ public class DbExecute extends DbHelper{
         Cursor c = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTOS, null);
         c.moveToFirst();
         do{
-            arr.add(c.getString(0) + " - " + c.getString(1) + " - " + c.getString(2));
+            arr.add(c.getString(0) + "-" + c.getString(1) + "-" + c.getString(2));
         }while(c.moveToNext());
 
         return arr;
+    }
+
+    public int selectPrecio(int cod){
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        int precio;
+
+        Cursor c = db.rawQuery("SELECT precioUni FROM " + TABLE_PRODUCTOS + " WHERE CODIGO = '" + cod + "'", null);
+        c.moveToFirst();
+        do{
+            precio = c.getInt(0);
+        }while(c.moveToNext());
+
+        return precio;
     }
 }
