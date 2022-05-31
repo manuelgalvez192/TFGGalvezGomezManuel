@@ -43,8 +43,8 @@ public class HacerPedido extends AppCompatActivity {
 
     DbExecute dbExecute;
     Spinner spEmples, spClie, spFab, spProd;
-    String material = "", aux, clie, nombre = "";
-    EditText cantidad;
+    String material = "", aux, clie, nombre = "", texto = "", emple = "", fab = "";
+    EditText cantidad, fecha, direccion;
     int precio = 0;
 
     private final static String NOMBRE_DIRECTORIO = "MiPdf";
@@ -90,6 +90,19 @@ public class HacerPedido extends AppCompatActivity {
             }
         });
 
+        spEmples.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                emple = (String) spEmples.getSelectedItem();
+                System.out.println("emple " + emple);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //nada
+            }
+        });
+
         spClie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -105,7 +118,25 @@ public class HacerPedido extends AppCompatActivity {
             }
         });
 
+        spFab.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fab = (String) spFab.getSelectedItem();
+                System.out.println("fab " + fab);
+            }
 
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //nada
+            }
+        });
+
+        fecha = findViewById(R.id.editTextDate);
+        direccion = findViewById(R.id.direccion);
+
+        System.out.println("texto: " + texto);
 
         //inicio variables
         generatePDFbtn = findViewById(R.id.generatePDFbtn);
@@ -157,17 +188,51 @@ public class HacerPedido extends AppCompatActivity {
 
         //para escribir texto
         //primero el texto, x posicion de inicio, y posicion de alto y por ultimo el titulo
-        canvas.drawText("Presupuesto del pedido", 209, 100, title);
-        canvas.drawText("Aplicación de TFG", 209, 80, title);
+        canvas.drawText("Presupuesto del pedido", 100, 220, title);
+        canvas.drawText("Aplicación de TFG", 100, 260, title);
 
         //creamos otro texto y le damos tamaño, colo y forma
         title.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         title.setColor(ContextCompat.getColor(this, R.color.black));
         title.setTextSize(15);
 
+        texto = "Empleado: " + emple;
         //ponemos el texto al centro del pdf
         title.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText(material, 396, 560, title);
+        canvas.drawText(texto, 396, 300, title);
+
+        texto = "Cliente: " + clie;
+        //ponemos el texto al centro del pdf
+        title.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(texto, 396, 330, title);
+
+        texto = "Fecha: " + fecha.getText().toString();
+        //ponemos el texto al centro del pdf
+        title.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(texto, 396, 360, title);
+
+        texto = "Fabricamte: " + fab;
+        //ponemos el texto al centro del pdf
+        title.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(texto, 396, 390, title);
+
+        texto = "Dirección: " + direccion.getText().toString();
+        //ponemos el texto al centro del pdf
+        title.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(texto, 396, 420, title);
+
+        texto = "Material: " + material;
+        //ponemos el texto al centro del pdf
+        title.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(texto, 396, 450, title);
+
+        texto = "Precio: " + precio;
+        //ponemos el texto al centro del pdf
+        title.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(texto, 396, 480, title);
+
+
+
 
         //terminamos la página
         pdfDocument.finishPage(myPage);
@@ -295,6 +360,8 @@ public class HacerPedido extends AppCompatActivity {
         System.out.println("precio " + precio);
 
         System.out.println("material " + material);
+
+        Toast.makeText(this, "Material añdido", Toast.LENGTH_SHORT).show();
     }
 
 }
