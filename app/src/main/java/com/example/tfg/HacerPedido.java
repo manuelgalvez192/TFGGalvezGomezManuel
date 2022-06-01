@@ -41,18 +41,15 @@ import org.w3c.dom.Document;
 
 public class HacerPedido extends AppCompatActivity {
 
+    //variables
+
     DbExecute dbExecute;
     Spinner spEmples, spClie, spFab, spProd;
     String material = "", aux, clie, nombre = "", texto = "", emple = "", fab = "";
     EditText cantidad, fecha, direccion;
     int precio = 0;
 
-    private final static String NOMBRE_DIRECTORIO = "MiPdf";
-    private final static String NOMBRE_DOCUMENTO = "prueba.pdf";
-    private final static String ETIQUETA_ERROR = "ERROR";
-    Button btnGenerar;
-
-    //boton PFG.
+    //boton PDF.
     Button generatePDFbtn;
 
     //ancho y altura del fichero
@@ -72,18 +69,20 @@ public class HacerPedido extends AppCompatActivity {
 
         cantidad = findViewById(R.id.editTextNumber);
 
-        añadirEmples();
+        añadirEmples();//lanza metodos al ejecutarse
         añadirClie();
         añadirFab();
         añadirProd();
 
+        //obtiene el item seleccionado en los spinner
         spProd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            //se selecciona un item
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 aux = (String) spProd.getSelectedItem();
                 System.out.println("producto " + aux);
             }
-
+            //no se selecciona nada
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
                 //nada
@@ -133,12 +132,13 @@ public class HacerPedido extends AppCompatActivity {
             }
         });
 
-        fecha = findViewById(R.id.editTextDate);
-        direccion = findViewById(R.id.direccion);
+
 
         System.out.println("texto: " + texto);
 
         //inicio variables
+        fecha = findViewById(R.id.editTextDate);
+        direccion = findViewById(R.id.direccion);
         generatePDFbtn = findViewById(R.id.generatePDFbtn);
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.img);
         scaledbmp = Bitmap.createScaledBitmap(bmp, 491, 138, false);
@@ -153,7 +153,7 @@ public class HacerPedido extends AppCompatActivity {
     }
 
 
-
+    //al pulsar boton se lanza
     public void generarPDF(View view) {
         //se crea objeto para el documento
         PdfDocument pdfDocument = new PdfDocument();
@@ -291,16 +291,16 @@ public class HacerPedido extends AppCompatActivity {
 
     public void añadirEmples(){
 
-        spEmples = findViewById(R.id.spinnerEmple);
-        dbExecute = new DbExecute(HacerPedido.this);
-        ArrayList<String> arr = new ArrayList<String>();
+        spEmples = findViewById(R.id.spinnerEmple);//inicias spinner
+        dbExecute = new DbExecute(HacerPedido.this);//enlazas base de datos
+        ArrayList<String> arr = new ArrayList<String>();//creas array con datos
 
-        arr = dbExecute.selectEmples();
+        arr = dbExecute.selectEmples();//el array recibe los valores
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this,
-                android.R.layout.simple_spinner_item, arr);
+                android.R.layout.simple_spinner_item, arr);//el array le pasa los valores al spinner
 
-        spEmples.setAdapter(adapter);
+        spEmples.setAdapter(adapter);//estableces el array
     }
 
     public void añadirClie(){
@@ -345,17 +345,18 @@ public class HacerPedido extends AppCompatActivity {
         spProd.setAdapter(adapter);
     }
 
+    //cada material añadido se suma a la variable
     public void añadirMaterial(View view)
     {
         int precioUni = 0;
 
-        String[] mat = aux.split("-");
+        String[] mat = aux.split("-");//separas los valores obtenidos para coger el que necesitamos
 
-        material = material + mat[1] + " x " + cantidad.getText().toString() + "\n";
+        material = material + mat[1] + " x " + cantidad.getText().toString() + "\n";//sumamos el material y la cantidad seleccionada
 
-        precioUni = dbExecute.selectPrecio(Integer.parseInt(mat[0]));
+        precioUni = dbExecute.selectPrecio(Integer.parseInt(mat[0]));//obtenemos el precio de cada uno de los materiales
 
-        precio = (precioUni * Integer.parseInt(cantidad.getText().toString())) + precio;
+        precio = (precioUni * Integer.parseInt(cantidad.getText().toString())) + precio;//multiplicamos la cantidad por la unidad, para obtener el total
 
         System.out.println("precio " + precio);
 

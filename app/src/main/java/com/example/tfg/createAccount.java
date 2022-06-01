@@ -31,7 +31,7 @@ public class createAccount extends AppCompatActivity {
     {
         dbExecute = new DbExecute(createAccount.this);
 
-        dbExecute.createAccount(cod.getText().toString(), pass.getText().toString());
+        dbExecute.createAccount(cod.getText().toString(), pass.getText().toString());//llamas a la funcion para añadir los datos a la base de datos
     }
 
 

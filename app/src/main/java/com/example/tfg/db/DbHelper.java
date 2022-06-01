@@ -11,6 +11,7 @@ import com.example.tfg.MainActivity;
 
 public class DbHelper extends SQLiteOpenHelper {
 
+    //estableces variables de los nombres para crear la base de datos
     private static final int DATABASE_VERSION = 12;
     private static final String DATABASE_NOMBRE = "tfg.db";
     public static final String TABLE_EMPLEADO = "t_empleado";
@@ -25,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String TABLE_FABRICANTE = "t_fabricante";
     public static final String TABLE_LOGIN = "t_login";
 
-
+    //creas el constructor con el super para llamar
     public DbHelper(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
     }
@@ -33,6 +34,9 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        //ejecucion con el metodo integrado de SQLite para crear la base de datos
+        //a cada campo se le da un tipo de dato y que no se pueda dejar vacio
+        //ademas de si es clave primaria
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_EMPLEADO + "(" +
                 "codigo INTEGER PRIMARY KEY," +
                 "nombre TEXT NOT NULL," +
@@ -42,6 +46,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "codCiudad INTEGER NOT NULL," +
                 "codTaller INTEGER NOT NULL)");
 
+        //añades datos en la base de datos
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_EMPLEADO + " VALUES('1', 'Sam', 'Fernandez', '1234', '2', '1', '1')");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_PAIS + "(" +
@@ -146,9 +151,11 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
+    //cada vez que se cambie la version de la app se ejecutara este metodo
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+        //borra las tablas para que al ejecutarse el otro metodo no de conflictos de que la tabla ya existe
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_EMPLEADO);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_PAIS);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_CIUDAD);
@@ -160,6 +167,6 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_PEDIDO);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_CATEGORIA);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_LOGIN);
-        onCreate(sqLiteDatabase);
+        onCreate(sqLiteDatabase);//lanza el metodo para crear las tablas de nuevo
     }
 }

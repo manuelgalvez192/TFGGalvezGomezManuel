@@ -24,6 +24,7 @@
         android:id="@+id/button6"
         android:layout_width="135dp"
         android:layout_height="142dp"
+        android:onClick="calendario"
         android:text="Consultar calendario"
         app:cornerRadius="100dip"
         app:layout_constraintBottom_toBottomOf="parent"

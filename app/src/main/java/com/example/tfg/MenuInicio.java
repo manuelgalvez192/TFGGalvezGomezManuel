@@ -22,7 +22,7 @@ public class MenuInicio extends AppCompatActivity {
 
     public void añadirEmple(View v)
     {
-        Intent addEmple = new Intent(this, AnadirEmpleado.class);
+        Intent addEmple = new Intent(this, AnadirEmpleado.class);//lanza vista para el menu añadir empleado
         startActivity(addEmple);
 
     }
@@ -35,14 +35,14 @@ public class MenuInicio extends AppCompatActivity {
 
     public void hacerPedido(View v)
     {
-        Intent crearCuenta = new Intent(this, HacerPedido.class);
-        startActivity(crearCuenta);
+        Intent hacerPed = new Intent(this, HacerPedido.class);
+        startActivity(hacerPed);
     }
-/*
+
     public void calendario(View v)
     {
-        Intent crearCuenta = new Intent(this, Calendrio.class);
-        startActivity(crearCuenta);
-    }*/
+        Intent calen= new Intent(this, Calendario.class);
+        startActivity(calen);
+    }
 
 }
