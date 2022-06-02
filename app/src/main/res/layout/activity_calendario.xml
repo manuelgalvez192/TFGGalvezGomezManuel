@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="viernes"
     tools:context=".Calendario">
 
     <TextView
@@ -62,6 +63,7 @@
         android:id="@+id/martes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="martes"
         android:text="Martes"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,6 +77,7 @@
         android:id="@+id/miercoles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="miercoles"
         android:text="Miércoles"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -88,6 +91,7 @@
         android:id="@+id/jueves"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="jueves"
         android:text="Jueves"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

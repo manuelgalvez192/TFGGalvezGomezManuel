@@ -14,11 +14,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TFG">
         <activity
+            android:name=".Viernes"
+            android:exported="false" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Calendario" />
+        </activity>
+        <activity
+            android:name=".Jueves"
+            android:exported="false" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Calendario" />
+        </activity>
+        <activity
+            android:name=".Miercoles"
+            android:exported="false" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Calendario" />
+        </activity>
+        <activity
+            android:name=".Martes"
+            android:exported="false" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Calendario" />
+        </activity>
+        <activity
             android:name=".Lunes"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Calendario" />
+        </activity>
         <activity
             android:name=".Calendario"
-            android:exported="false" >
+            android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MenuInicio" />
@@ -26,9 +58,9 @@
         <activity
             android:name=".HacerPedido"
             android:exported="false">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".MenuInicio" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuInicio" />
         </activity>
         <activity
             android:name=".AnadirClientes"

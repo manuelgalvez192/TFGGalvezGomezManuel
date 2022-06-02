@@ -312,4 +312,42 @@ public class DbExecute extends DbHelper{//hereda de la base de datos para poder 
 
         return precio;
     }
+
+    public void guardarTareas(String dia, String tareas)
+    {
+
+        try
+        {
+            DbHelper dbHelper = new DbHelper(context);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+            System.out.println("INSERT INTO " + TABLE_CALENDARIO + "(" + dia + ") VALUES('" + tareas + "');");
+
+            db.execSQL("INSERT INTO " + TABLE_CALENDARIO + "(" + dia + ") VALUES('" + tareas + "');");
+
+        }catch(Exception e)
+        {
+            e.toString();
+            Toast.makeText(context, "Hubo un error al actualizar la tarea", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Toast.makeText(context, "Tarea actualizada", Toast.LENGTH_SHORT).show();
+    }
+
+    public String getTareas(String dia)
+    {
+        DbHelper dbHelper = new DbHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        String tareas;
+
+        Cursor c = db.rawQuery("SELECT " + dia + " FROM " + TABLE_CALENDARIO, null);
+        c.moveToFirst();
+        do{
+            tareas = c.getString(0);
+        }while(c.moveToNext());
+
+        return tareas;
+    }
 }

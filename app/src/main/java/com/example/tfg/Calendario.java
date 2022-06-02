@@ -13,20 +13,14 @@ import java.util.Date;
 
 public class Calendario extends AppCompatActivity {
 
-    CalendarView calendario;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
 
-        calendario = findViewById(R.id.calendarView);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DATE,Calendar.getInstance().getActualMinimum(Calendar.DATE));
-        long date = calendar.getTime().getTime();
-
-        calendario.setMinDate(date);
+        Calendar calendario = Calendar.getInstance();
+        CalendarView calendarView = findViewById(R.id.calendarView);
+        calendarView.setDate(calendario.getTimeInMillis());
     }
 
     public void lunes(View view){
@@ -37,17 +31,25 @@ public class Calendario extends AppCompatActivity {
 
     public void martes(View view){
 
+        Intent martes = new Intent(this, Martes.class);//lanza vista para el menu añadir empleado
+        startActivity(martes);
     }
 
     public void miercoles(View view){
 
+        Intent miercoles = new Intent(this, Miercoles.class);//lanza vista para el menu añadir empleado
+        startActivity(miercoles);
     }
 
     public void jueves(View view){
 
+        Intent jueves = new Intent(this, Jueves.class);//lanza vista para el menu añadir empleado
+        startActivity(jueves);
     }
 
     public void viernes(View view){
 
+        Intent viernes = new Intent(this, Viernes.class);//lanza vista para el menu añadir empleado
+        startActivity(viernes);
     }
 }
