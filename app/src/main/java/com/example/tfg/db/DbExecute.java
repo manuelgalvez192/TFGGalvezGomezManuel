@@ -198,7 +198,7 @@ public class DbExecute extends DbHelper{//hereda de la base de datos para poder 
     }
 
     //para añadir clientes
-    public void añadirClie(String cod, String nom, String ape, String dir, int tlf){
+    public void añadirClie(String cod, String nom, String ape, String dir, String tlf){
 
         long i = 0;
 

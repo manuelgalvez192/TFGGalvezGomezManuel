@@ -31,6 +31,6 @@ public class AnadirClientes extends AppCompatActivity {
         dbExecute = new DbExecute(AnadirClientes.this);
 
         dbExecute.añadirClie(cod.getText().toString(), nombre.getText().toString(), apellidos.getText().toString(),
-                dir.getText().toString(), Integer.parseInt(tlf.getText().toString()));
+                dir.getText().toString(), tlf.getText().toString());
     }
 }

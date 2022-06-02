@@ -12,7 +12,7 @@ import com.example.tfg.MainActivity;
 public class DbHelper extends SQLiteOpenHelper {
 
     //estableces variables de los nombres para crear la base de datos
-    private static final int DATABASE_VERSION = 17;
+    private static final int DATABASE_VERSION = 19;
     private static final String DATABASE_NOMBRE = "tfg.db";
     public static final String TABLE_EMPLEADO = "t_empleado";
     public static final String TABLE_PAIS = "t_pais";
@@ -76,7 +76,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "nombre TEXT NOT NULL," +
                 "apellidos TEXT NOT NULL," +
                 "direccion TEXT NOT NULL," +
-                "telefono INTEGER NOT NULL)");
+                "telefono TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CLIENTES + " VALUES('1', 'Juan', 'Gomez', 'C/ veinticuatro', '+34 697421568')");
 
