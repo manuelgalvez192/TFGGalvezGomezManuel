@@ -313,7 +313,7 @@ public class DbExecute extends DbHelper{//hereda de la base de datos para poder 
         return precio;
     }
 
-    public void guardarTareas(String dia, String tareas)
+    public void guardarTareas(String tareas, String tabla)
     {
 
         try
@@ -321,33 +321,35 @@ public class DbExecute extends DbHelper{//hereda de la base de datos para poder 
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            System.out.println("INSERT INTO " + TABLE_CALENDARIO + "(" + dia + ") VALUES('" + tareas + "');");
+            System.out.println("INSERT INTO " + tabla + " VALUES('" + tareas + "');");
 
-            db.execSQL("INSERT INTO " + TABLE_CALENDARIO + "(" + dia + ") VALUES('" + tareas + "');");
+            //lanzo ejecución de SQL para añadir en la tabla pasada por parametro lo que has querido guardar
+            db.execSQL("INSERT INTO " + tabla + " VALUES('" + tareas + "');");
 
         }catch(Exception e)
         {
             e.toString();
             Toast.makeText(context, "Hubo un error al actualizar la tarea", Toast.LENGTH_LONG).show();
-            return;
+            return;//regreso si hy algún error para que no salte el mensaje de actualizado
         }
 
         Toast.makeText(context, "Tarea actualizada", Toast.LENGTH_SHORT).show();
     }
 
-    public String getTareas(String dia)
+    public String getTareas(String dia, String tabla)
     {
         DbHelper dbHelper = new DbHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         String tareas;
 
-        Cursor c = db.rawQuery("SELECT " + dia + " FROM " + TABLE_CALENDARIO, null);
+        //guardo en el curso lo seleccionado de la tabla correspondiente
+        Cursor c = db.rawQuery("SELECT " + dia + " FROM " + tabla, null);
         c.moveToFirst();
         do{
-            tareas = c.getString(0);
+            tareas = c.getString(0);//obtengo la informacion
         }while(c.moveToNext());
 
-        return tareas;
+        return tareas;//regreso el valor obtenido
     }
 }

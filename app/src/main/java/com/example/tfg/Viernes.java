@@ -22,14 +22,14 @@ public class Viernes extends AppCompatActivity {
 
         multi = findViewById(R.id.tareasViernes);
 
-        String tarea = dbExecute.getTareas("viernes");
+        String tarea = dbExecute.getTareas("viernes", "t_viernes");
 
         multi.setText(tarea);
     }
 
     public void guardar(View view)
     {
-        dbExecute.guardarTareas("viernes", multi.getText().toString());
+        dbExecute.guardarTareas(multi.getText().toString(), "t_viernes");
 
     }
 }

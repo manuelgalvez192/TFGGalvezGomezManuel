@@ -24,14 +24,14 @@ public class Lunes extends AppCompatActivity {
         multi = findViewById(R.id.tareasLunes);//lo referencio
 
         //recojo el valor que haya en la base de datos para que se obtenga lo ya guardado
-        multi.setText(dbExecute.getTareas("lunes"));
+        multi.setText(dbExecute.getTareas("lunes", "t_lunes"));
     }
 
     public void guardar(View view)
     {
 
         //guardo en la base de datos lo que hayas añadido
-        dbExecute.guardarTareas("lunes", multi.getText().toString());
+        dbExecute.guardarTareas(multi.getText().toString(), "t_lunes");
 
     }
 }

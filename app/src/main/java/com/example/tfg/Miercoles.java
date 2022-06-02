@@ -22,12 +22,12 @@ public class Miercoles extends AppCompatActivity {
 
         multi = findViewById(R.id.tareasMiercoles);
 
-        multi.setText(dbExecute.getTareas("miercoles"));
+        multi.setText(dbExecute.getTareas("miercoles", "t_miercoles"));
     }
 
     public void guardar(View view)
     {
-        dbExecute.guardarTareas("miercoles", multi.getText().toString());
+        dbExecute.guardarTareas(multi.getText().toString(), "t_miercoles");
 
     }
 }

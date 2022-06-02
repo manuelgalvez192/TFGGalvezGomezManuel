@@ -12,7 +12,7 @@ import com.example.tfg.MainActivity;
 public class DbHelper extends SQLiteOpenHelper {
 
     //estableces variables de los nombres para crear la base de datos
-    private static final int DATABASE_VERSION = 15;
+    private static final int DATABASE_VERSION = 17;
     private static final String DATABASE_NOMBRE = "tfg.db";
     public static final String TABLE_EMPLEADO = "t_empleado";
     public static final String TABLE_PAIS = "t_pais";
@@ -26,7 +26,6 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String TABLE_FABRICANTE = "t_fabricante";
     public static final String TABLE_LOGIN = "t_login";
 
-    public static final String TABLE_CALENDARIO= "t_calendario";
 
     //creas el constructor con el super para llamar
     public DbHelper(@Nullable Context context) {
@@ -150,14 +149,30 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("INSERT INTO " + TABLE_LOGIN + " VALUES('Admin', 'Admin')");
 
 
-        sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_CALENDARIO + "(" +
-                "lunes TEXT," +
-                "martes TEXT," +
-                "miercoles TEXT," +
-                "jueves TEXT," +
+        sqLiteDatabase.execSQL("CREATE TABLE t_lunes (" +
+                "lunes TEXT)");
+
+        sqLiteDatabase.execSQL("INSERT INTO t_lunes VALUES('')");
+
+        sqLiteDatabase.execSQL("CREATE TABLE t_martes (" +
+                "martes TEXT)");
+
+        sqLiteDatabase.execSQL("INSERT INTO t_martes VALUES('')");
+
+        sqLiteDatabase.execSQL("CREATE TABLE t_miercoles (" +
+                "miercoles TEXT)");
+
+        sqLiteDatabase.execSQL("INSERT INTO t_miercoles VALUES('')");
+
+        sqLiteDatabase.execSQL("CREATE TABLE t_jueves (" +
+                "jueves TEXT)");
+
+        sqLiteDatabase.execSQL("INSERT INTO t_jueves VALUES('')");
+
+        sqLiteDatabase.execSQL("CREATE TABLE t_viernes (" +
                 "viernes TEXT)");
 
-        sqLiteDatabase.execSQL("INSERT INTO " + TABLE_CALENDARIO + " VALUES('', '', '', '', '')");
+        sqLiteDatabase.execSQL("INSERT INTO t_viernes VALUES('')");
 
 
     }
@@ -179,7 +194,11 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_PEDIDO);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_CATEGORIA);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_LOGIN);
-        sqLiteDatabase.execSQL("DROP TABLE " + TABLE_CALENDARIO);
+        sqLiteDatabase.execSQL("DROP TABLE t_lunes");
+        sqLiteDatabase.execSQL("DROP TABLE t_martes");
+        sqLiteDatabase.execSQL("DROP TABLE t_miercoles");
+        sqLiteDatabase.execSQL("DROP TABLE t_jueves");
+        sqLiteDatabase.execSQL("DROP TABLE t_viernes");
         onCreate(sqLiteDatabase);//lanza el metodo para crear las tablas de nuevo
     }
 }
